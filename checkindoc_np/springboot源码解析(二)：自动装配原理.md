@@ -2,7 +2,7 @@
 
 
 
-##### 1、在springboot的启动过程中，有一个步骤是创建上下文，如果不记得可以看下面的代码：
+##### 1、在springboot的启动过程中，有一个步骤是创建上下文：
 
 ```java
 public ConfigurableApplicationContext run(String... args) {
@@ -166,7 +166,7 @@ public ConfigurableApplicationContext run(String... args) {
 	}
 ```
 
-##### 5、下面方法判断启动类中是否包含@Component注解，但是会神奇的发现我们的启动类中并没有该注解，继续更进发现MergedAnnotations类传入了一个参数SearchStrategy.TYPE_HIERARCHY，会查找继承关系中是否包含这个注解，@SpringBootApplication-->@SpringBootConfiguration-->@Configuration-->@Component,当找到@Component注解之后，会把该对象注册到AnnotatedBeanDefinitionReader对象中
+##### 5、下面方法判断启动类中是否包含@Component注解，但是会发现我们的启动类中并没有该注解，继续更进发现MergedAnnotations类传入了一个参数SearchStrategy.TYPE_HIERARCHY，会查找继承关系中是否包含这个注解，@SpringBootApplication-->@SpringBootConfiguration-->@Configuration-->@Component,当找到@Component注解之后，会把该对象注册到AnnotatedBeanDefinitionReader对象中
 
 ```java
 private boolean isComponent(Class<?> type) {
